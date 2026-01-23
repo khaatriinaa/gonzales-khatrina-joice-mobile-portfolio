@@ -18,7 +18,7 @@ export default function ProfileCard({ styles, theme }: Props) {
       ]}
     >
       <Image
-        source={{ uri: "https://imgur.com/a/NSEnozQ" }}
+        source={{ uri: "https://imgur.com/NLvaPYp" }}
         style={[
           styles.avatar,
           {
