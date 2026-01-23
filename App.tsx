@@ -156,22 +156,22 @@ const createStyles = () =>
     },
 
     skillsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between', 
-    gap: 12,
-  },
-  skillItemRowStyle: {
-    flex: 1,
-    minWidth: 140,
-    maxWidth: '48%',
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    borderWidth: 1,
-    alignItems: 'center',
-    marginBottom: 12,
-  },
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between', 
+      gap: 12,
+    },
+    skillItemRowStyle: {
+      flex: 1,
+      minWidth: 140,
+      maxWidth: '48%',
+      paddingVertical: 10,
+      paddingHorizontal: 16,
+      borderRadius: 12,
+      borderWidth: 1,
+      alignItems: 'center',
+      marginBottom: 12,
+    },
 
     contactIconsRow: {
       flexDirection: "row",
@@ -187,13 +187,25 @@ const createStyles = () =>
       marginBottom: 12,
       borderWidth: 1,
     },
+
+    projectCard: {
+      padding: 18,
+      borderRadius: 16,
+      marginBottom: 0,          // we use ItemSeparatorComponent instead
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 6,
+      elevation: 2,
+    },
     projectTitle: {
-      fontSize: 17,
-      fontWeight: "600",
-      marginBottom: 6,
+      fontSize: 18,
+      fontWeight: "700",
+      marginBottom: 8,
     },
     projectDesc: {
       fontSize: 15,
       lineHeight: 22,
     },
+
   });
