@@ -155,6 +155,24 @@ const createStyles = () =>
       fontWeight: "500",
     },
 
+    skillsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between', 
+    gap: 12,
+  },
+  skillItemRowStyle: {
+    flex: 1,
+    minWidth: 140,
+    maxWidth: '48%',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+
     contactIconsRow: {
       flexDirection: "row",
       justifyContent: "center",
