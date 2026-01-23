@@ -4,25 +4,33 @@ import {
   ScrollView,
   TouchableOpacity,
   View,
+  Text,
   StatusBar,
+  useColorScheme,
   StyleSheet,
 } from "react-native";
 
 import { lightTheme, darkTheme, Theme } from "./src/theme/colors";
+import { projects } from "./src/data/projects";
 
 import ProfileCard from "./src/components/ProfileCard";
 import Skills from "./src/components/Skills";
+import Projects from "./src/components/Projects";
+import Contact from "./src/components/Contact";
 
 export default function App() {
-  const [isDark, setIsDark] = useState(true);
+  const systemColorScheme = useColorScheme();
+  const [isDark, setIsDark] = useState(systemColorScheme === "dark");
+
   const theme: Theme = isDark ? darkTheme : lightTheme;
+
   const styles = useMemo(() => createStyles(), []);
 
   return (
     <>
       <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
       <SafeAreaView style={[styles.container, { backgroundColor: theme.bg }]}>
-        {/* Theme toggle */}
+        {/* Fancy toggle */}
         <TouchableOpacity
           style={styles.themeToggleContainer}
           onPress={() => setIsDark((prev) => !prev)}
@@ -47,8 +55,8 @@ export default function App() {
         >
           <ProfileCard styles={styles} theme={theme} />
           <Skills styles={styles} theme={theme} />
-
-          {/* You can add Projects and Contact later */}
+          <Projects styles={styles} theme={theme} data={projects} />
+          <Contact styles={styles} theme={theme} />
         </ScrollView>
       </SafeAreaView>
     </>
@@ -61,11 +69,10 @@ const createStyles = () =>
       flex: 1,
     },
     scrollContent: {
-      paddingHorizontal: 24,
-      paddingTop: 80,
-      paddingBottom: 60,
+      paddingHorizontal: 20,
+      paddingTop: 70,     // space for toggle
+      paddingBottom: 40,
     },
-
     themeToggleContainer: {
       position: "absolute",
       top: 50,
@@ -85,120 +92,108 @@ const createStyles = () =>
       borderRadius: 11,
     },
 
-    // Card (used in Skills too)
     card: {
       borderRadius: 20,
       padding: 20,
       marginBottom: 20,
+      // subtle shadow
       shadowColor: "#000",
       shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.12,
+      shadowOpacity: 0.08,
       shadowRadius: 8,
-      elevation: 4,
+      elevation: 3,
     },
 
-    // ProfileCard styles
-    profileCard: {
-      borderRadius: 24,
-      padding: 28,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.2,
-      shadowRadius: 16,
-      elevation: 10,
-    },
-
-    avatarContainer: {
-      width: 120,
-      height: 120,
-      borderRadius: 16,
-      overflow: "hidden",
-      marginBottom: 16,
-      backgroundColor: "#2d3748",
-      justifyContent: "center",
-      alignItems: "center",
-    },
     avatar: {
-      width: 100,
-      height: 100,
-      borderRadius: 50,
+      width: 110,
+      height: 110,
+      borderRadius: 55,
+      alignSelf: "center",
+      marginBottom: 16,
+      borderWidth: 3,
     },
-
     name: {
       fontSize: 24,
       fontWeight: "700",
+      textAlign: "center",
       marginBottom: 4,
     },
-    role: {
-      fontSize: 16,
+    username: {
+      fontSize: 15,
       fontWeight: "500",
+      textAlign: "center",
       marginBottom: 12,
     },
-
-    locationRow: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 6,
-      marginBottom: 20,
-    },
-    locationText: {
-      fontSize: 14,
+    bio: {
+      fontSize: 15,
+      textAlign: "center",
+      lineHeight: 22,
     },
 
-    linksRow: {
+    sectionTitle: {
+      fontSize: 20,
+      fontWeight: "700",
+      marginBottom: 16,
+      textAlign: "center",
+    },
+
+    skillsContainer: {
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "center",
-      gap: 16,
-      marginBottom: 24,
     },
-    linkButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 8,
-      paddingVertical: 8,
-      paddingHorizontal: 16,
-      borderRadius: 12,
-      backgroundColor: "#f1f5f9", // light bg – adjust in dark mode if needed
-    },
-    linkText: {
-      fontSize: 14,
-      fontWeight: "500",
-    },
-
-    summaryContainer: {
-      width: "100%",
-      alignItems: "flex-start",
-    },
-    sectionTitleSmall: {
-      fontSize: 18,
-      fontWeight: "700",
-      marginBottom: 12,
-    },
-    summaryText: {
-      fontSize: 15,
-      lineHeight: 24,
-    },
-
-    // Skills styles
-    skillsRow: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-      gap: 10,
-    },
-    skillTag: {
+    skillPill: {
       paddingHorizontal: 14,
       paddingVertical: 8,
-      borderRadius: 12,
+      borderRadius: 20,
+      marginHorizontal: 6,
+      marginVertical: 6,
       borderWidth: 1,
     },
-    skillTagText: {
+    skillText: {
       fontSize: 14,
       fontWeight: "500",
     },
-    subHeader: {
-      fontSize: 14,
+
+    skillsGrid: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      gap: 12,
+    },
+    skillItemRowStyle: {
+      flex: 1,
+      minWidth: 140, 
+      maxWidth: '48%',             
+      paddingVertical: 10,
+      paddingHorizontal: 16,
+      borderRadius: 12,
+      borderWidth: 1,
+      alignItems: 'center',
+      marginBottom: 12,
+    },
+
+    contactIconsRow: {
+      flexDirection: "row",
+      justifyContent: "center",
+      gap: 40,
+      marginTop: 12,
+    },
+
+    // Project styles (used in Projects.tsx)
+    projectItem: {
+      padding: 16,
+      borderRadius: 12,
+      marginBottom: 12,
+      borderWidth: 1,
+    },
+    projectTitle: {
+      fontSize: 17,
       fontWeight: "600",
+      marginBottom: 6,
+    },
+    projectDesc: {
+      fontSize: 15,
+      lineHeight: 22,
     },
   });
