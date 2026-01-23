@@ -24,7 +24,7 @@ export default function App() {
 
   const theme: Theme = isDark ? darkTheme : lightTheme;
 
-  const styles = useMemo(() => createStyles(theme), [theme]);
+  const styles = useMemo(() => createStyles(), []);
 
   return (
     <>
@@ -63,7 +63,7 @@ export default function App() {
   );
 }
 
-const createStyles = (theme: Theme) =>
+const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -92,67 +92,6 @@ const createStyles = (theme: Theme) =>
       borderRadius: 11,
     },
 
-    // Replace your current avatar and card styles with these
-
-profileCard: {
-  width: "100%",
-  maxWidth: 360,
-  borderRadius: 28,
-  paddingTop: 40,
-  paddingBottom: 32,
-  paddingHorizontal: 24,
-  alignItems: "center",
-  marginBottom: 20,
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 10 },
-  shadowOpacity: 0.18,
-  shadowRadius: 16,
-  elevation: 10,
-},
-
-avatarFrame: {
-  width: 140,
-  height: 140,
-  borderRadius: 20,           // square with rounded corners
-  overflow: "hidden",
-  justifyContent: "center",
-  alignItems: "center",
-  marginBottom: 20,
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 6 },
-  shadowOpacity: 0.25,
-  shadowRadius: 12,
-  elevation: 8,
-},
-
-avatarInner: {
-  width: 110,
-  height: 110,
-  borderRadius: 55,           // circular inner avatar
-  borderWidth: 4,
-  borderColor: theme.accent,
-},
-
-name: {
-  fontSize: 26,
-  fontWeight: "700",
-  marginBottom: 6,
-  letterSpacing: -0.3,
-},
-
-username: {
-  fontSize: 16,
-  fontWeight: "600",
-  marginBottom: 12,
-},
-
-role: {
-  fontSize: 15,
-  textAlign: "center",
-  lineHeight: 22,
-  paddingHorizontal: 12,
-},
-
     card: {
       borderRadius: 20,
       padding: 20,
@@ -173,7 +112,18 @@ role: {
       marginBottom: 16,
       borderWidth: 3,
     },
-
+    name: {
+      fontSize: 24,
+      fontWeight: "700",
+      textAlign: "center",
+      marginBottom: 4,
+    },
+    username: {
+      fontSize: 15,
+      fontWeight: "500",
+      textAlign: "center",
+      marginBottom: 12,
+    },
     bio: {
       fontSize: 15,
       textAlign: "center",
@@ -252,4 +202,33 @@ role: {
     fontSize: 15,
     lineHeight: 22,
   },
+
+  profileWrapper: {
+  alignItems: "center",
+  marginBottom: 40,
+},
+
+profileCard: {
+  width: 260,          // square card
+  height: 260,
+  borderRadius: 24,
+  paddingTop: 70,      // space for avatar overlap
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 6 },
+  shadowOpacity: 0.1,
+  shadowRadius: 10,
+  elevation: 6,
+},
+
+profileAvatar: {
+  position: "absolute",
+  top: -45,            // half outside the card
+  width: 90,
+  height: 90,
+  borderRadius: 45,
+  borderWidth: 4,
+  borderColor: "#fff",
+  zIndex: 10,
+},
+
   });
