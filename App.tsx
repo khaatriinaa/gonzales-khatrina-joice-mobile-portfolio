@@ -150,4 +150,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
   },
+
+  contactIcons: {
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 24,
+  marginTop: 12,
+},
 });
