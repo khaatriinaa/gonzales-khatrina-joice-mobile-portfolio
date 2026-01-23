@@ -182,18 +182,24 @@ const createStyles = () =>
 
     // Project styles (used in Projects.tsx)
     projectItem: {
-      padding: 16,
-      borderRadius: 12,
-      marginBottom: 12,
-      borderWidth: 1,
-    },
-    projectTitle: {
-      fontSize: 17,
-      fontWeight: "600",
-      marginBottom: 6,
-    },
-    projectDesc: {
-      fontSize: 15,
-      lineHeight: 22,
-    },
+    padding: 16,
+    borderRadius: 16,
+    // borderWidth and backgroundColor are set inline to use theme values
+  },
+
+  projectTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+
+  projectShortDesc: {
+    fontSize: 14,
+    lineHeight: 20,
+  },
+
+  projectDesc: {
+    fontSize: 15,
+    lineHeight: 22,
+  },
   });
