@@ -45,57 +45,109 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
   },
+
+  /* ---------- THEME TOGGLE ---------- */
   toggleRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 16,
+    alignItems: "center",
+    marginVertical: 20,
+    paddingHorizontal: 4,
   },
+
+  /* ---------- CARD BASE ---------- */
   card: {
-    borderRadius: 20,
-    padding: 16,
-    marginBottom: 16,
+    borderRadius: 24,
+    padding: 18,
+    marginBottom: 20,
+
+    // subtle depth
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    elevation: 4,
   },
+
+  /* ---------- PROFILE ---------- */
   avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 110,
+    height: 110,
+    borderRadius: 55,
     alignSelf: "center",
-    marginBottom: 12,
+    marginBottom: 14,
   },
+
   name: {
-    fontSize: 22,
-    fontWeight: "700",
+    fontSize: 24,
+    fontWeight: "800",
     textAlign: "center",
+    letterSpacing: 0.4,
   },
+
   bio: {
     textAlign: "center",
-    marginTop: 8,
+    marginTop: 10,
+    fontSize: 14,
+    lineHeight: 20,
+    opacity: 0.85,
   },
+
+  /* ---------- SECTIONS ---------- */
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    marginBottom: 12,
+    fontSize: 20,
+    fontWeight: "800",
+    marginBottom: 14,
+    letterSpacing: 0.3,
   },
+
+  /* ---------- SKILLS ---------- */
   skillContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
   },
+
   skill: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  projectItem: {
-    padding: 12,
-    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+    marginRight: 10,
     marginBottom: 10,
   },
-  projectTitle: {
-    fontSize: 16,
+
+  skillText: {
+    fontSize: 13,
     fontWeight: "600",
+  },
+
+  /* ---------- PROJECTS ---------- */
+  projectItem: {
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 12,
+  },
+
+  projectTitle: {
+    fontSize: 17,
+    fontWeight: "700",
+    marginBottom: 4,
+  },
+
+  projectDesc: {
+    fontSize: 14,
+    opacity: 0.8,
+    lineHeight: 20,
+  },
+
+  /* ---------- CONTACT ---------- */
+  contactItem: {
+    marginBottom: 10,
+  },
+
+  contactText: {
+    fontSize: 14,
+    fontWeight: "500",
   },
 });
