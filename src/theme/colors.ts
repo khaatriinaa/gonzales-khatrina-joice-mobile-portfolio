@@ -3,7 +3,7 @@ export const lightTheme = {
   card: "#ffffff",
   text: "#0f172a",
   subText: "#475569",
-  accent: "#6366f1",       // indigo-500
+  accent: "#6366f1",
   border: "#e2e8f0",
   projectBg: "#f1f5f9",
   skillBg: "#f1f5f9",
@@ -16,7 +16,7 @@ export const darkTheme = {
   card: "#1e293b",
   text: "#e2e8f0",
   subText: "#94a3b8",
-  accent: "#818cf8",       // indigo-400 (better visibility on dark)
+  accent: "#818cf8",
   border: "#334155",
   projectBg: "#1e293b",
   skillBg: "#334155",
