@@ -202,33 +202,4 @@ const createStyles = () =>
     fontSize: 15,
     lineHeight: 22,
   },
-
-  profileWrapper: {
-  alignItems: "center",
-  marginBottom: 40,
-},
-
-profileCard: {
-  width: 260,          // square card
-  height: 260,
-  borderRadius: 24,
-  paddingTop: 70,      // space for avatar overlap
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 6 },
-  shadowOpacity: 0.1,
-  shadowRadius: 10,
-  elevation: 6,
-},
-
-profileAvatar: {
-  position: "absolute",
-  top: -45,            // half outside the card
-  width: 90,
-  height: 90,
-  borderRadius: 45,
-  borderWidth: 4,
-  borderColor: "#fff",
-  zIndex: 10,
-},
-
   });
