@@ -1,40 +1,43 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
-import { Project } from "../types/Project";
+import { View, Text } from "react-native";
+import { Theme } from "../theme/colors";
 
 type Props = {
   styles: any;
-  theme: {
-    text: string;
-    subText: string;
-    card: string;
-    projectBg: string;
-  };
-  data: Project[];
+  theme: Theme;
 };
 
-export default function Projects({ styles, theme, data }: Props) {
+const skills = [
+  "React Native", "Expo", "TypeScript", "JavaScript",
+  "React", "Node.js", "PHP", "MySQL",
+  "Git", "Figma", "UI/UX Basics", "TailwindCSS",
+];
+
+export default function Skills({ styles, theme }: Props) {
   return (
     <View style={[styles.card, { backgroundColor: theme.card }]}>
       <Text style={[styles.sectionTitle, { color: theme.text }]}>
-        Projects
+        Skills
       </Text>
 
-      <FlatList
-        data={data}
-        scrollEnabled={false}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={[styles.projectItem, { backgroundColor: theme.projectBg }]}>
-            <Text style={[styles.projectTitle, { color: theme.text }]}>
-              {item.title}
-            </Text>
-            <Text style={{ color: theme.subText }}>
-              {item.description}
+      <View style={styles.skillsContainer}>
+        {skills.map((skill) => (
+          <View
+            key={skill}
+            style={[
+              styles.skillPill,
+              {
+                backgroundColor: theme.skillBg,
+                borderColor: theme.border,
+              },
+            ]}
+          >
+            <Text style={[styles.skillText, { color: theme.text }]}>
+              {skill}
             </Text>
           </View>
-        )}
-      />
+        ))}
+      </View>
     </View>
   );
 }

@@ -1,30 +1,22 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleProp, ViewStyle, TextStyle } from "react-native";
+import { Theme } from "../theme/colors";
 
 type Props = {
   styles: any;
-  theme: any;
+  theme: Theme;
 };
 
 export default function ProfileCard({ styles, theme }: Props) {
   return (
-    <View
-      style={[
-        styles.card,
-        {
-          backgroundColor: theme.card,
-          alignItems: "center",
-        },
-      ]}
-    >
+    <View style={[styles.card, { backgroundColor: theme.card }]}>
       <Image
-        source={{ uri: "https://scontent-hkg1-1.xx.fbcdn.net/v/t39.30808-1/434149085_3799460017045876_7608266015219454770_n.jpg?stp=cp6_dst-jpg_s160x160_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=mfBrz1xssRYQ7kNvwFRG-sP&_nc_oc=Adn1Wc3zMZUOuK3IoyU8WiZn2_biwG2mPaO1nzDR6lXi6cPL4fwJ7XgoXAJJ9IP5ecU7e_qb-mw1QW6JHMNsJSar&_nc_zt=24&_nc_ht=scontent-hkg1-1.xx&_nc_gid=80g1lwqCEmw_nLsEJ5HoYA&oh=00_AfpJTeNgCQSVQ_9f5x7wxThmMcHHC0MHc8RIKADzMxTagQ&oe=6979173B" }}
+        source={{
+          uri: "https://scontent-hkg1-1.xx.fbcdn.net/v/t39.30808-1/434149085_3799460017045876_7608266015219454770_n.jpg?...",
+        }}
         style={[
           styles.avatar,
-          {
-            borderWidth: 3,
-            borderColor: theme.accent,
-          },
+          { borderColor: theme.accent },
         ]}
       />
 
@@ -32,27 +24,13 @@ export default function ProfileCard({ styles, theme }: Props) {
         Khatrina Joice M. Gonzales
       </Text>
 
-      <Text
-        style={{
-          color: theme.subText,
-          marginTop: 2,
-          fontSize: 13,
-          fontWeight: "500",
-        }}
-      >
+      <Text style={[styles.username, { color: theme.subText }]}>
         @khaatriinaa
       </Text>
 
-      <Text
-        style={[
-          styles.bio,
-          {
-            color: theme.text,
-            maxWidth: "90%",
-          },
-        ]}
-      >
-        Computer Science student • Mobile & Web Developer
+      <Text style={[styles.bio, { color: theme.subText }]}>
+        Computer Science student • Mobile & Web Developer passionate about
+        creating clean, user-friendly applications.
       </Text>
     </View>
   );

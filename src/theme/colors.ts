@@ -1,19 +1,27 @@
-export const darkTheme = {
-  bg: "#0f172a",
-  card: "#111827",
-  text: "#ffffff",
-  subText: "#9ca3af",
-  skillBg: "#1f2933",
-  skillText: "#ffffff",
-  projectBg: "#1f2933",
+export const lightTheme = {
+  bg: "#f8fafc",
+  card: "#ffffff",
+  text: "#0f172a",
+  subText: "#475569",
+  accent: "#6366f1",       // indigo-500
+  border: "#e2e8f0",
+  projectBg: "#f1f5f9",
+  skillBg: "#f1f5f9",
+  toggleTrack: "#e2e8f0",
+  toggleKnob: "#ffffff",
 };
 
-export const lightTheme = {
-  bg: "#f3f4f6",
-  card: "#ffffff",
-  text: "#111827",
-  subText: "#6b7280",
-  skillBg: "#e5e7eb",
-  skillText: "#111827",
-  projectBg: "#f3f4f6",
+export const darkTheme = {
+  bg: "#0f172a",
+  card: "#1e293b",
+  text: "#e2e8f0",
+  subText: "#94a3b8",
+  accent: "#818cf8",       // indigo-400 (better visibility on dark)
+  border: "#334155",
+  projectBg: "#1e293b",
+  skillBg: "#334155",
+  toggleTrack: "#334155",
+  toggleKnob: "#60a5fa",
 };
+
+export type Theme = typeof lightTheme;

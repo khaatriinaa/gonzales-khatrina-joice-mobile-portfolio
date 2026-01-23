@@ -1,101 +1,181 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   SafeAreaView,
   ScrollView,
-  Switch,
-  Text,
+  TouchableOpacity,
   View,
+  Text,
+  StatusBar,
+  useColorScheme,
   StyleSheet,
 } from "react-native";
+
+import { lightTheme, darkTheme, Theme } from "./src/theme/colors";
+import { projects } from "./src/data/projects";
 
 import ProfileCard from "./src/components/ProfileCard";
 import Skills from "./src/components/Skills";
 import Projects from "./src/components/Projects";
 import Contact from "./src/components/Contact";
 
-import { projects } from "./src/data/projects";
-import { darkTheme, lightTheme } from "./src/theme/colors";
-
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const theme = darkMode ? darkTheme : lightTheme;
+  const systemColorScheme = useColorScheme();
+  const [isDark, setIsDark] = useState(systemColorScheme === "dark");
+
+  const theme: Theme = isDark ? darkTheme : lightTheme;
+
+  const styles = useMemo(() => createStyles(), []);
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.bg }]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* THEME TOGGLE */}
-        <View style={styles.toggleRow}>
-          <Text style={{ color: theme.text }}>
-            {darkMode ? "Dark Mode" : "Light Mode"}
-          </Text>
-          <Switch value={darkMode} onValueChange={setDarkMode} />
-        </View>
+    <>
+      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+      <SafeAreaView style={[styles.container, { backgroundColor: theme.bg }]}>
+        {/* Fancy toggle */}
+        <TouchableOpacity
+          style={styles.themeToggleContainer}
+          onPress={() => setIsDark((prev) => !prev)}
+          activeOpacity={0.8}
+        >
+          <View style={[styles.toggleTrack, { backgroundColor: theme.toggleTrack }]}>
+            <View
+              style={[
+                styles.toggleKnob,
+                {
+                  backgroundColor: theme.toggleKnob,
+                  transform: [{ translateX: isDark ? 22 : 0 }],
+                },
+              ]}
+            />
+          </View>
+        </TouchableOpacity>
 
-        <ProfileCard styles={styles} theme={theme} />
-        <Skills styles={styles} theme={theme} data={projects} />
-        <Projects styles={styles} theme={theme} data={projects} />
-        <Contact styles={styles} theme={theme} />
-      </ScrollView>
-    </SafeAreaView>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
+          <ProfileCard styles={styles} theme={theme} />
+          <Skills styles={styles} theme={theme} />
+          <Projects styles={styles} theme={theme} data={projects} />
+          <Contact styles={styles} theme={theme} />
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 }
 
-/* ---------------- STYLES (CENTRALIZED) ---------------- */
+const createStyles = () =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    scrollContent: {
+      paddingHorizontal: 20,
+      paddingTop: 70,     // space for toggle
+      paddingBottom: 40,
+    },
+    themeToggleContainer: {
+      position: "absolute",
+      top: 50,
+      right: 24,
+      zIndex: 10,
+    },
+    toggleTrack: {
+      width: 52,
+      height: 28,
+      borderRadius: 14,
+      justifyContent: "center",
+      padding: 3,
+    },
+    toggleKnob: {
+      width: 22,
+      height: 22,
+      borderRadius: 11,
+    },
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 16,
-  },
-  toggleRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical: 16,
-  },
-  card: {
-    borderRadius: 20,
-    padding: 16,
-    marginBottom: 16,
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    alignSelf: "center",
-    marginBottom: 12,
-  },
-  name: {
-    fontSize: 22,
-    fontWeight: "700",
-    textAlign: "center",
-  },
-  bio: {
-    textAlign: "center",
-    marginTop: 8,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    marginBottom: 12,
-  },
-  skillContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  skill: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  projectItem: {
-    padding: 12,
-    borderRadius: 12,
-    marginBottom: 10,
-  },
-  projectTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-  },
-});
+    card: {
+      borderRadius: 20,
+      padding: 20,
+      marginBottom: 20,
+      // subtle shadow
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.08,
+      shadowRadius: 8,
+      elevation: 3,
+    },
+
+    avatar: {
+      width: 110,
+      height: 110,
+      borderRadius: 55,
+      alignSelf: "center",
+      marginBottom: 16,
+      borderWidth: 3,
+    },
+    name: {
+      fontSize: 24,
+      fontWeight: "700",
+      textAlign: "center",
+      marginBottom: 4,
+    },
+    username: {
+      fontSize: 15,
+      fontWeight: "500",
+      textAlign: "center",
+      marginBottom: 12,
+    },
+    bio: {
+      fontSize: 15,
+      textAlign: "center",
+      lineHeight: 22,
+    },
+
+    sectionTitle: {
+      fontSize: 20,
+      fontWeight: "700",
+      marginBottom: 16,
+      textAlign: "center",
+    },
+
+    skillsContainer: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
+    },
+    skillPill: {
+      paddingHorizontal: 14,
+      paddingVertical: 8,
+      borderRadius: 20,
+      marginHorizontal: 6,
+      marginVertical: 6,
+      borderWidth: 1,
+    },
+    skillText: {
+      fontSize: 14,
+      fontWeight: "500",
+    },
+
+    contactIconsRow: {
+      flexDirection: "row",
+      justifyContent: "center",
+      gap: 40,
+      marginTop: 12,
+    },
+
+    // Project styles (used in Projects.tsx)
+    projectItem: {
+      padding: 16,
+      borderRadius: 12,
+      marginBottom: 12,
+      borderWidth: 1,
+    },
+    projectTitle: {
+      fontSize: 17,
+      fontWeight: "600",
+      marginBottom: 6,
+    },
+    projectDesc: {
+      fontSize: 15,
+      lineHeight: 22,
+    },
+  });

@@ -1,38 +1,38 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Linking } from "react-native";
+import { View, TouchableOpacity, Linking, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Theme } from "../theme/colors";
 
 type Props = {
   styles: any;
-  theme: any;
+  theme: Theme;
 };
 
 export default function Contact({ styles, theme }: Props) {
+  const openLink = (url: string) => {
+    Linking.openURL(url).catch((err) => console.error("Error opening link", err));
+  };
+
   return (
     <View style={[styles.card, { backgroundColor: theme.card }]}>
-      <Text style={[styles.sectionTitle, { color: theme.text, textAlign: "center" }]}>
-        Contact
+      <Text style={[styles.sectionTitle, { color: theme.text }]}>
+        Let's Connect
       </Text>
 
-      {/* ICON ROW */}
-      <View style={styles.contactIcons}>
-        <TouchableOpacity
-          onPress={() => Linking.openURL("mailto:your.email@gmail.com")}
-        >
-          <Ionicons name="mail-outline" size={28} color={theme.text} />
+      <View style={styles.contactIconsRow}>
+        <TouchableOpacity onPress={() => openLink("mailto:khatrina@example.com")}>
+          <Ionicons name="mail-outline" size={32} color={theme.accent} />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => Linking.openURL("https://github.com/yourname")}
-        >
-          <Ionicons name="logo-github" size={28} color={theme.text} />
+        <TouchableOpacity onPress={() => openLink("https://github.com/yourusername")}>
+          <Ionicons name="logo-github" size={32} color={theme.accent} />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => Linking.openURL("https://linkedin.com/in/yourname")}
-        >
-          <Ionicons name="logo-linkedin" size={28} color={theme.text} />
+        <TouchableOpacity onPress={() => openLink("https://linkedin.com/in/yourprofile")}>
+          <Ionicons name="logo-linkedin" size={32} color={theme.accent} />
         </TouchableOpacity>
+
+        {/* Add more if needed: twitter, instagram, etc. */}
       </View>
     </View>
   );
