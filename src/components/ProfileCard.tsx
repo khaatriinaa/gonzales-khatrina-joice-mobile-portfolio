@@ -18,7 +18,7 @@ export default function ProfileCard({ styles, theme }: Props) {
       ]}
     >
       <Image
-        source={{ uri: "https://i.pravatar.cc/300" }}
+        source={{ uri: "https://imgur.com/a/NSEnozQ" }}
         style={[
           styles.avatar,
           {
@@ -29,7 +29,7 @@ export default function ProfileCard({ styles, theme }: Props) {
       />
 
       <Text style={[styles.name, { color: theme.text }]}>
-        Your Name
+        Khatrina Joice M. Gonzales
       </Text>
 
       <Text
@@ -40,7 +40,7 @@ export default function ProfileCard({ styles, theme }: Props) {
           fontWeight: "500",
         }}
       >
-        @yourusername
+        @khaatriinaa
       </Text>
 
       <Text
