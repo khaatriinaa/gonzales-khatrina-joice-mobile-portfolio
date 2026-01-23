@@ -29,8 +29,9 @@ export default function ProfileCard({ styles, theme }: Props) {
       </Text>
 
       <Text style={[styles.bio, { color: theme.subText }]}>
-        Computer Science student • Mobile & Web Developer passionate about
-        creating clean, user-friendly applications.
+        Computer Science student • C3A • 3rd-Year Computer Science
+        Mobile & Web Developer passionate about creating 
+        clean, user-friendly applications.
       </Text>
     </View>
   );

@@ -20,19 +20,22 @@ export default function Contact({ styles, theme }: Props) {
       </Text>
 
       <View style={styles.contactIconsRow}>
-        <TouchableOpacity onPress={() => openLink("mailto:khatrina@example.com")}>
+        <TouchableOpacity onPress={() => openLink("mailto:khatrina_joice_gonzales.edu.ph")}>
           <Ionicons name="mail-outline" size={32} color={theme.accent} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => openLink("https://github.com/yourusername")}>
+        <TouchableOpacity onPress={() => openLink("https://github.com/khaatriinaa")}>
           <Ionicons name="logo-github" size={32} color={theme.accent} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => openLink("https://linkedin.com/in/yourprofile")}>
+        <TouchableOpacity onPress={() => openLink("https://www.linkedin.com/in/khatrina-gonzales-58a50a389/")}>
           <Ionicons name="logo-linkedin" size={32} color={theme.accent} />
         </TouchableOpacity>
 
-        {/* Add more if needed: twitter, instagram, etc. */}
+        <TouchableOpacity onPress={() => openLink("https://www.facebook.com/khaatriinaa/")}>
+          <Ionicons name="logo-facebook" size={32} color={theme.accent} />
+        </TouchableOpacity>
+
       </View>
     </View>
   );
