@@ -93,15 +93,14 @@ const createStyles = () =>
     },
 
     card: {
-      borderRadius: 20,
-      padding: 20,
+      borderRadius: 28,
+      padding: 24,
       marginBottom: 20,
-      // subtle shadow
       shadowColor: "#000",
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.08,
-      shadowRadius: 8,
-      elevation: 3,
+      shadowOffset: { width: 0, height: 10 },
+      shadowOpacity: 0.15,
+      shadowRadius: 20,
+      elevation: 8,
     },
 
     avatar: {
