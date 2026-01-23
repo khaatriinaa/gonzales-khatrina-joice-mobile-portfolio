@@ -32,7 +32,7 @@ export default function App() {
         </View>
 
         <ProfileCard styles={styles} theme={theme} />
-        <Skills styles={styles} theme={theme} />
+        <Skills styles={styles} theme={theme} data={projects} />
         <Projects styles={styles} theme={theme} data={projects} />
         <Contact styles={styles} theme={theme} />
       </ScrollView>
@@ -45,117 +45,57 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
   },
-
-  /* ---------- THEME TOGGLE ---------- */
   toggleRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 20,
-    paddingHorizontal: 4,
+    marginVertical: 16,
   },
-
-  /* ---------- CARD BASE ---------- */
   card: {
-    borderRadius: 24,
-    padding: 18,
-    marginBottom: 20,
-
-    // subtle depth
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.12,
-    shadowRadius: 8,
-    elevation: 4,
+    borderRadius: 20,
+    padding: 16,
+    marginBottom: 16,
   },
-
-  /* ---------- PROFILE ---------- */
   avatar: {
-    width: 110,
-    height: 110,
-    borderRadius: 55,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     alignSelf: "center",
-    marginBottom: 14,
+    marginBottom: 12,
   },
-
   name: {
-    fontSize: 24,
-    fontWeight: "800",
+    fontSize: 22,
+    fontWeight: "700",
     textAlign: "center",
-    letterSpacing: 0.4,
   },
-
   bio: {
     textAlign: "center",
-    marginTop: 10,
-    fontSize: 14,
-    lineHeight: 20,
-    opacity: 0.85,
+    marginTop: 8,
   },
-
-  /* ---------- SECTIONS ---------- */
   sectionTitle: {
-    fontSize: 20,
-    fontWeight: "800",
-    marginBottom: 14,
-    letterSpacing: 0.3,
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 12,
   },
-
-  /* ---------- SKILLS ---------- */
   skillContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
   },
-
   skill: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 20,
-    marginRight: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    marginRight: 8,
+    marginBottom: 8,
+  },
+  projectItem: {
+    padding: 12,
+    borderRadius: 12,
     marginBottom: 10,
   },
-
-  skillText: {
-    fontSize: 13,
+  projectTitle: {
+    fontSize: 16,
     fontWeight: "600",
   },
-
-  /* ---------- PROJECTS ---------- */
-  projectItem: {
-    padding: 16,
-    borderRadius: 16,
-    marginBottom: 12,
-  },
-
-  projectTitle: {
-    fontSize: 17,
-    fontWeight: "700",
-    marginBottom: 4,
-  },
-
-  projectDesc: {
-    fontSize: 14,
-    opacity: 0.8,
-    lineHeight: 20,
-  },
-
-  /* ---------- CONTACT ---------- */
-  contactItem: {
-    marginBottom: 10,
-  },
-
-  contactText: {
-    fontSize: 14,
-    fontWeight: "500",
-  },
-
-  contactIcons: {
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: 24,
-  marginTop: 12,
-},
 });

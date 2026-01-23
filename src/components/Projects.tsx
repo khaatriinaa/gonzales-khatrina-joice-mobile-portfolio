@@ -11,7 +11,16 @@ type Props = {
 export default function Projects({ styles, theme, data }: Props) {
   return (
     <View style={[styles.card, { backgroundColor: theme.card }]}>
-      <Text style={[styles.sectionTitle, { color: theme.text }]}>
+      {/* SECTION TITLE */}
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: theme.text,
+            textAlign: "center",
+          },
+        ]}
+      >
         Projects
       </Text>
 
@@ -19,12 +28,37 @@ export default function Projects({ styles, theme, data }: Props) {
         data={data}
         scrollEnabled={false}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={{ paddingTop: 4 }}
         renderItem={({ item }) => (
-          <View style={[styles.projectItem, { backgroundColor: theme.projectBg }]}>
-            <Text style={[styles.projectTitle, { color: theme.text }]}>
+          <View
+            style={[
+              styles.projectItem,
+              {
+                backgroundColor: theme.projectBg,
+              },
+            ]}
+          >
+            {/* PROJECT TITLE */}
+            <Text
+              style={[
+                styles.projectTitle,
+                {
+                  color: theme.text,
+                },
+              ]}
+            >
               {item.title}
             </Text>
-            <Text style={{ color: theme.subText }}>
+
+            {/* PROJECT DESCRIPTION */}
+            <Text
+              style={[
+                styles.projectDesc,
+                {
+                  color: theme.subText,
+                },
+              ]}
+            >
               {item.description}
             </Text>
           </View>
